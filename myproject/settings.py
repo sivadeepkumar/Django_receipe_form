@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-_d19+q(q2k*5&z0s6o=k$qx$8uu5@j!jdluvj#jt5eo=^21ccg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,6 +47,7 @@ EXTERNAL_APPS = [
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS
+import os
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,7 +64,7 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,18 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 
-import os
-
-
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-
-
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "")]
 
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'public/static') 

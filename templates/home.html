@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block start %}
+
+<!-- {{request.user}} -->
+<div>
+    <form class = 'col-6 mx-auto cart p-3 shadow-lg' method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="text-center">Home</h2>
+        <hr>
+        <div>
+            <div>
+
+                <div class="mb-3">
+                    <label for="receipeName" style="width: 200px;">Receipe Name</label>
+                    <input id = 'receipeName'  type="text"  name="receipe-name" required />
+                </div>
+    
+                <div class="mb-3">
+                    <label for="receipeDescription" style="width: 200px;">Receipe description</label>
+                    <textarea id="receipeDescription" name="receipe-description"required ></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="receipeImage" style="width: 200px;">Receipe Name</label>
+                    <input id = 'receipeImage' class="btn" type="file" name="receipe-image" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="receipeName" style="width: 200px;">Receipe Cost</label>
+                    <input id = 'receipeName'  type="number"  name="receipe-cost" required />
+                </div>
+
+                
+
+                
+
+
+                
+
+                <br/>
+                <hr/>
+                <button class="btn btn-primary" type="submit">add Receipe</button>
+            </div>
+            
+        </div>
+            
+           
+        </form>
+        <div class="p-5 shadow-lg">
+
+            <nav class="navbar p-3 bg-outline-danger ">
+                <div class="container-fluid d-flex ">
+                 
+                  <form>
+                    <label for="searchInput" >Search</label>
+                    <br/>
+                    <input id="searchInput" type="search" name="search"/>
+                    
+                    
+                    <button type="submit" class="btn btn-primary" >Search</button>
+                    
+                </form>
+                </div>   
+              </nav>
+
+
+
+
+
+            
+            <!-- {{receipes}} -->
+            
+
+            <table class="table">
+        <th>
+          <tr>
+            <th scope="col">S.no</th>
+            <th scope="col">Receipe Name</th>
+            <th scope="col">Receipe Description</th>
+            <th scope="col">Receipe Image</th>
+            <th scope="col">Action</th>
+            <th scopt="col">Cost</th>
+            <th scopt="col">Quantity</th>
+            <th scopt="col">Price</th>
+            
+          </tr>
+        </th>
+        <tb>
+        
+            {% for receipe in receipes %}
+            
+            
+            <tr>
+                <td scope="row">{{forloop.counter}}</td>
+                <td>{{receipe.receipe_name}}</td>
+                <td>{{receipe.receipe_description}}</td>
+                <td><img src="/media/{{receipe.receipe_image}}/" width="100px" height="100px"  /></td>
+                <td><a href="/delete/{{receipe.id}}/" class="btn btn-danger">delete</a>   <a href="/update/{{receipe.id}}/" class="btn btn-success">update</a></td>
+                
+                <td>{{receipe.price}}</td>
+                <td><a href="/add/{{receipe.id}}/" style="text-decoration: none;">+</a><p>{{receipe.count}}</p> <a href="/sub/{{receipe.id}}/" style="text-decoration: none;">-</a></td>
+                
+                <td>{{receipe.total}}</td>
+                
+                
+            </tr>   
+            
+            
+            {% endfor %}
+            
+        </tb>
+    </table>
+    <p class="text-center" >Total : {{cart_value}}</p>
+</div>
+{%endblock%}
