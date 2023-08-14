@@ -1,0 +1,121 @@
+{% extends '../base.html'  %}
+
+{% block start %}
+<form>
+  <div class="col-md-6">
+    <input class="form-control" name="search" placeholder="search"  />
+  </div>
+  
+  <div class="col-md-6">
+    <button type="submit" class="btn btn-success">Search</button>
+  </div>
+</form>
+
+
+
+<nav aria-label="Page navigation example" >
+  <ul class="pagination flex-row justify-content-center pt-5"  >
+    {% if l_student.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page=1" aria-label="First">
+        <span aria-hidden="true">&laquo;&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{ l_student.previous_page_number }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% endif %}
+
+    {% for i in l_student.paginator.page_range %}
+    <li class="page-item {% if l_student.number == i %}active{% endif %}">
+      <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+    </li>
+    {% endfor %}
+
+    {% if l_student.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ l_student.next_page_number }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{ l_student.paginator.num_pages }}" aria-label="Last">
+        <span aria-hidden="true">&raquo;&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+
+
+
+<table class=" p-5 table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Student ID</th>
+        <th scope="col">Student Name</th>
+        <th scope="col">Department</th>
+        <th scope="col">student Age</th>
+        <th scope="col">student Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      {% for student in l_student %}
+      <tr>
+        <th scope="row"><a href="{% url 'see_marks' student.student_id %}"> {{student.student_id}} </a></th>
+        <td>{{student.student_name}}</td>
+        <td>{{student.department.department}}</td>
+        <td>{{student.student_age}}</td>
+        <td>{{student.student_address}}</td>
+        
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+
+
+
+<!-- Below code Dammy from Bootstrap -->
+<!-- <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+This is From Django Pagination site
+
+<div class="pagination">
+  <span class="step-links">
+      {% if l_student.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ l_student.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ l_student.number }} of {{ l_student.paginator.num_pages }}.
+      </span>
+
+      {% if l_student.has_next %}
+          <a href="?page={{ l_student.next_page_number }}">next</a>
+          <a href="?page={{ l_student.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div> -->
+
+{% endblock %}

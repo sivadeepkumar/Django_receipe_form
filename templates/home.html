@@ -30,13 +30,6 @@
                     <input id = 'receipeName'  type="number"  name="receipe-cost" required />
                 </div>
 
-                
-
-                
-
-
-                
-
                 <br/>
                 <hr/>
                 <button class="btn btn-primary" type="submit">add Receipe</button>
@@ -92,16 +85,13 @@
             
             <tr>
                 <td scope="row">{{forloop.counter}}</td>
-                <td>{{receipe.receipe_name}}</td>
+                <td><a href="/item/{{receipe.id}}/" style="text-decoration: none;">{{receipe.receipe_name}}</a></td>
                 <td>{{receipe.receipe_description}}</td>
                 <td><img src="/media/{{receipe.receipe_image}}/" width="100px" height="100px"  /></td>
                 <td><a href="/delete/{{receipe.id}}/" class="btn btn-danger">delete</a>   <a href="/update/{{receipe.id}}/" class="btn btn-success">update</a></td>
-                
                 <td>{{receipe.price}}</td>
                 <td><a href="/add/{{receipe.id}}/" style="text-decoration: none;">+</a><p>{{receipe.count}}</p> <a href="/sub/{{receipe.id}}/" style="text-decoration: none;">-</a></td>
-                
                 <td>{{receipe.total}}</td>
-                
                 
             </tr>   
             
@@ -110,6 +100,6 @@
             
         </tb>
     </table>
-    <p class="text-center" >Total : {{cart_value}}</p>
+    <p class="text-center" >{%if cart_value > 0 %} Total Cart Value : {{cart_value}} {%endif%}</p>
 </div>
 {%endblock%}

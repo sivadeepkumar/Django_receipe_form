@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block start %}
+<div class="container">
+    <div class="row">
+        <div class="col-8 shadow-lg">
+            <div>
+
+                <img src='/media/{{item.receipe_image}}' width="500" height="500"  />
+                <p>{{item.receipe_name}}</p>
+                <p>{{item.receipe_description}}</p>
+            </div>
+            <div>
+
+                <a href="/" class="btn btn-dark">Back</a>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}
