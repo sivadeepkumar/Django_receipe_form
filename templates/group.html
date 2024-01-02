@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+<h1 class="text-center"  >Notice Board</h1>
+
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Serial No :</th>
+        <th scope="col">User</th>
+        <th scope="col">Notices</th>
+        <th scope="col">Description</th>
+        <th scope="col">Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in users %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.username}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.user_type}}</td>
+        <td>{{i.remarks}}</td>
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+  <br/>
+  <br/>
+  <hr/>
+  <br/>
+  <a href = "{% url 'add_user' %}" >Add Student</a>
+  <a href = "{% url 'add_notice' %}" >Add Notices</a>
+  
+
+
+{% endblock %}
+
+

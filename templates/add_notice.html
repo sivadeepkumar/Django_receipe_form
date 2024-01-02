@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+<form class="mx-1 mx-md-4" method="POST" autocomplete="off">
+
+                    
+
+    {% csrf_token %}
+
+
+    
+
+      <div class="d-flex flex-row align-items-center mb-4">
+        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+        <div class="form-outline flex-fill mb-0">
+          <input type="text" name="user" id="form3Example1c" class="form-control" />
+          <label class="form-label" for="form3Example1c">User Name</label>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row align-items-center mb-4">
+        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+        <div class="form-outline flex-fill mb-0">
+          <input type="text" name="notice" id="form3Example1c" class="form-control" />
+          <label class="form-label" for="form3Example1c">Notice</label>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row align-items-center mb-4">
+        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+        <div class="form-outline flex-fill mb-0">
+          <input type="text" name="description" id="form3Example1c" class="form-control" />
+          <label class="form-label" for="form3Example1c">Description</label>
+        </div>
+      </div>
+
+      <div class="d-flex flex-row align-items-center mb-4">
+        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+        <div class="form-outline flex-fill mb-0">
+          <input type="text" name="remarks" id="form3Example1c" class="form-control" />
+          <label class="form-label" for="form3Example1c">Remarks</label>
+        </div>
+      </div>
+
+      
+
+      
+
+      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+        <button type="submit" class="btn btn-primary btn-lg">Add Notice</button>
+      </div>
+      
+    </form>
+
+
+
+{% endblock %}

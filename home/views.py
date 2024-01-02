@@ -11,10 +11,12 @@ from django.db.models import Q,Sum,Avg,Max,Min,Count
 from home.seed import generate_report_card
 import pdb
 
-
 @login_required(login_url='/login/')
 def home(request):
     if request.method == 'POST':
+        
+
+
         
         data = request.POST
         receipe_name = data.get('receipe-name')
@@ -57,7 +59,8 @@ def home(request):
 def update(request,id):
     queryset = Receipe.objects.get(id = id)
     context = {'receipe' : queryset}
-    
+
+
     if request.method == 'POST':
         data = request.POST
 

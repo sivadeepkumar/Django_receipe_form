@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home.views import home,delete,update,add,sub,itemDescription,get_students,see_marks
-from product.views import product,login_page,register,logout_page,email_verification,email_verification_fail
+from product.views import product,login_page,register,logout_page,email_verification,email_verification_fail,group,add_user,add_notice
 from cart.views import cart
 from django.conf.urls.static import static
 from django.conf import settings
@@ -27,6 +27,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('register/',register,name='register'),
     path('login/',login_page,name='login_page'),
+    path('group/',group,name='group'),
     path('email-verification/<str:uidb64>/<str:token>/',email_verification,name='email-verification'),
     path('email-verification-fail',email_verification_fail,name='email_verification_fail'),
     path('logout/',logout_page,name='logout_page'),
@@ -40,7 +41,9 @@ urlpatterns = [
     path('sub/<id>/',sub,name='sub'),
     path('item/<id>/',itemDescription,name='itemDescription'),
     path('get_students/',get_students,name='get_students'),
-    path('see_marks/<student_id>',see_marks,name='see_marks')
+    path('see_marks/<student_id>',see_marks,name='see_marks'),
+    path('add_user/',add_user,name='add_user'),
+    path('add_notice/',add_notice,name='add_notice'),
 ]
 
 

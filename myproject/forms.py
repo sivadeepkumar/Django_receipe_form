@@ -5,11 +5,19 @@ from django import forms
 from django.forms.widgets import PasswordInput,TextInput
 
 
+ 
+ 
 class CreateUserForm(UserCreationForm):
+    USER_TYPE_CHOICES = [
+        ('teacher', 'Teacher'),
+        ('student', 'Student'),
+    ]
+
+    user_type = forms.ChoiceField(choices=USER_TYPE_CHOICES, widget=forms.RadioSelect)
 
     class Meta:
         model = User
-        fields = ['username','email','password1','password2']
+        fields = ['username','email','password1','password2','user_type']
 
     #Unique Email Restriction
 
@@ -21,13 +29,15 @@ class CreateUserForm(UserCreationForm):
         email = self.cleaned_data.get('email')
 
         # if email is used before. That raise text as "This email is Invalid"
-        if User.objects.filter(email=email).exists():
+        if User.objects.filter(email = email).exists():
             raise forms.ValidationError('This Email is Invalid')
         
         if len(email) >= 350:
             raise forms.ValidationError('Your Email is too Long')
     
         return email
+
+
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget = TextInput)

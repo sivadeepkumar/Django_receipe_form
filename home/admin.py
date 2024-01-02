@@ -10,6 +10,10 @@ admin.site.register(StudentID)
 admin.site.register(Department)
 admin.site.register(Subject)
 admin.site.register(SubjectMarks)
+admin.site.register(NoticeBoard)
+
+
+
 
 class ReportCardAdmin(admin.ModelAdmin):
     list_display=['student','student_rank','total_marks','date_of_report_card_generation']
@@ -25,4 +29,5 @@ admin.site.register(ReportCard,ReportCardAdmin)
 
 class ShowAttributes(admin.ModelAdmin):
     list_display = ['student','subject','marks']
+
 

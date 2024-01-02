@@ -25,8 +25,6 @@ SECRET_KEY = 'django-insecure-_d19+q(q2k*5&z0s6o=k$qx$8uu5@j!jdluvj#jt5eo=^21ccg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
-
 ALLOWED_HOSTS = ['*']
 
 
@@ -45,8 +43,13 @@ EXTERNAL_APPS = [
     'home',
     'product',
     'cart',
-    'crispy_forms'
+    'crispy_forms',
+    # 'myproject'
+    
+    
+    
 ]
+
 
 
 
@@ -100,6 +103,10 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+
+# AUTH_GROUP_MODEL = 'product.CustomGroup'
+# AUTH_PERMISSION_MODEL = 'product.CustomPermission'
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

@@ -79,3 +79,18 @@ class ReportCard(models.Model):
 
     class Meta:
         unique_together = ['student_rank','date_of_report_card_generation']
+
+
+
+
+class NoticeBoard(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    notice = models.CharField(max_length=100)
+    description = models.CharField(max_length=1000)
+    remarks = models.CharField(max_length=100)
+    
+
+
+    def __str__(self):
+        return self.notice
+    
